@@ -1,7 +1,7 @@
 #include <fstream>
 #include <vector>
 #include <unordered_set>
-#include <cstring>
+#include <string>
 #include <queue>
 using namespace std;
 struct tranzitie
@@ -16,7 +16,7 @@ struct parcurgere
 };
 int main()
 {
-    vector<tranzitie>l[1000];
+    vector<tranzitie> l[1000];
     queue<parcurgere> st;//st de la stari, nu stiva
     string cuv;
     unordered_set<int> setF;
@@ -51,12 +51,12 @@ int main()
         fin>>cuv;
         while(!st.empty())st.pop();//golesc coada
         parcurgere p;
-        p.depth=-1;
+        p.depth=0;
         p.stare=s;
         st.push(p);//adaug starea initiala
-        for(int j=-1;j<(int)cuv.size()-1;j++)//procesarea pe litere
+        for(int j=0;j<(int)cuv.size();j++)//procesarea pe litere
         {
-            p.depth=j;
+            p.depth=j+1;
             while(st.front().depth==j)//cat timp in coada sunt stari de adancimea curenta
             {
                 currentstate=st.front().stare;//scot starea curenta din coada
